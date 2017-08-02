@@ -1,6 +1,9 @@
 package main
 
-import "math/rand"
+import (
+	"math/rand"
+	"time"
+)
 
 var quotes = []string{
 	"Bran thought about it. 'Can a man still be brave if he's afraid?' 'That is the only time a man can be brave,' his father told him.",
@@ -36,5 +39,6 @@ var quotes = []string{
 }
 
 func RandomQuote() string {
-	return "\"" + quotes[rand.Intn(len(quotes)-1)] + "\""
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	return "\"" + quotes[r.Intn(len(quotes)-1)] + "\""
 }
